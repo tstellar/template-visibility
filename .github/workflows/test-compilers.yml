@@ -1,0 +1,45 @@
+name: Compiler Tests
+
+permissions:
+  contents: read
+
+on:
+  push:
+
+jobs:
+  compiler-tests:
+    name: "${{ matrix.container }} ${{ matrix.compiler }} ${{ matrix.defines }}"
+    runs-on: ubuntu-latest
+    container: "registry.fedoraproject.org/${{ matrix.container }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - "g++"
+          - "clang++"
+        defines:
+          - "-DGNU_VISIBILITY"
+          - "-DCXX11_VISIBILITY"
+          - ""
+        container:
+          - fedora:38
+          - fedora:37
+          - fedora:36
+          - fedora:35
+          - fedora:34
+          - fedora:32
+          - fedora:31
+          - fedora:30
+
+    steps:
+      - name: Install dependencies
+        run: |
+          dnf install -y gcc-c++ clang cmake ninja-build
+
+      - name: Checkout Code
+        uses: actions/checkout@v3 
+          
+      - name: Run tests
+        run: |
+          cmake -G Ninja -S . -B build -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS=${{ matrix.defines }}
+          ninja -C build
