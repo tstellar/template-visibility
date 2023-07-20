@@ -46,5 +46,5 @@ jobs:
           
       - name: Run tests
         run: |
-          cmake -G Ninja -S . -B build -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS=${{ matrix.defines }}
-          ninja -C build
+          cmake -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS=${{ matrix.defines }}
+          ninja
