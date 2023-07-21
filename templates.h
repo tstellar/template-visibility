@@ -7,6 +7,8 @@ public:
   void get();
 };
 
+extern template class PUBLIC_ABI TemplateClass<A>;
+
 // gcc < 13 does not support mixing gnu visibility attributes with alignas.
 // The order does not matter, it rejects the attribute both before and after
 // alignas.

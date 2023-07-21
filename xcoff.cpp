@@ -1,6 +1,6 @@
 #include "xcoff.h"
 
-template <typename AddressType> PUBLIC_ABI
+template <typename AddressType>
 bool XCOFFRelocation<AddressType>::isRelocationSigned() const {
   return true;
 } 

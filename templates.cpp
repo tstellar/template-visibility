@@ -16,4 +16,4 @@ template <typename T> void TemplateClass<T>::get() { }
 // See https://eel.is/c++draft/temp.explicit#11
 // See https://cplusplus.github.io/CWG/issues/470.html
 // See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=22263
-template class PUBLIC_ABI TemplateClass<A>;
+template class TemplateClass<A>;
