@@ -15,3 +15,7 @@ extern template class PUBLIC_ABI TemplateClass<A>;
 // clang <=12, the gnu style attribute must come before alignas(8).
 
 class PUBLIC_ABI alignas(8) AlignAs { };
+
+namespace attribute_after PUBLIC_ABI { }
+
+namespace PUBLIC_ABI attribute_before { }
