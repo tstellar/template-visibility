@@ -1,6 +1,10 @@
 #include "compiler.h"
 
-class A { };
+class A {
+  friend void friendFunc(void);
+};
+
+PUBLIC_ABI void friendFunc(void);
 
 template <typename T> class PUBLIC_ABI TemplateClass {
 public:
