@@ -8,4 +8,4 @@ nm -CD gcc-build/libtemplate-visibility.so
 echo "******** CLANG"
 clang++ --version
 ninja -v -C clang-build  && echo "******** CLANG SUCCESS"
-nm -CD gcc-build/libtemplate-visibility.so
+nm -CD clang-build/libtemplate-visibility.so
