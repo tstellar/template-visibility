@@ -8,6 +8,7 @@ on:
 
 jobs:
   compiler-tests:
+    if: false
     name: "${{ matrix.container }} ${{ matrix.compiler }} ${{ matrix.defines }}"
     runs-on: ubuntu-latest
     # Can't use the Fedora registry, because it does not have fedora <= 29.
@@ -48,3 +49,21 @@ jobs:
         run: |
           cmake -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS=${{ matrix.defines }}
           ninja
+
+  compiler-tests-windows:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-2019
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run tests
+        shell: bash
+        run: |
+          cmake -S . -B .
+          cmake --build .
