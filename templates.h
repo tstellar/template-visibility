@@ -20,4 +20,5 @@ class PUBLIC_ABI alignas(8) AlignAs { };
 //namespace attribute_after PUBLIC_ABI { }
 
 // clang < 15 does not allow gnu visibility attributes before the namespace name.
-namespace PUBLIC_ABI attribute_before { }
+// msvc does not support this.
+//namespace PUBLIC_ABI attribute_before { }
