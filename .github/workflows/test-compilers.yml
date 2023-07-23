@@ -8,7 +8,6 @@ on:
 
 jobs:
   compiler-tests:
-    if: false
     name: "${{ matrix.container }} ${{ matrix.compiler }} ${{ matrix.defines }}"
     runs-on: ubuntu-latest
     # Can't use the Fedora registry, because it does not have fedora <= 29.
