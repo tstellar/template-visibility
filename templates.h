@@ -1,7 +1,9 @@
 #include "compiler.h"
 
+// msvc requies friend function declarations to have attributes if the regular
+// declaration also does.
 class A {
-  friend void friendFunc(void);
+  friend PUBLIC_ABI void friendFunc(void);
 };
 
 PUBLIC_ABI void friendFunc(void);
@@ -26,3 +28,20 @@ class PUBLIC_ABI alignas(8) AlignAs { };
 // clang < 15 does not allow gnu visibility attributes before the namespace name.
 // msvc does not support this.
 //namespace PUBLIC_ABI attribute_before { }
+
+
+// msvc unique_ptr issue
+#include <memory>
+#include <vector>
+
+class PUBLIC_ABI UniquePtrTest {
+};
+
+class PUBLIC_ABI UniquePtrTestMember {
+  // Explicitly delete these to avoid error C2280: attempting to reference a deleted function.
+  UniquePtrTestMember(const UniquePtrTestMember &) = delete;
+  UniquePtrTestMember &operator=(const UniquePtrTestMember &) = delete;
+private:
+    std::vector<std::unique_ptr<UniquePtrTest>> x;
+};
+
