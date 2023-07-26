@@ -2,6 +2,9 @@
 
 // msvc requies friend function declarations to have attributes if the regular
 // declaration also does.
+//
+// gcc only accepts c++11 style attributes after void, clang/msvc accept
+// it before and after.
 class A {
   friend void PUBLIC_ABI friendFunc(void);
 };
@@ -33,7 +36,10 @@ class VTableParent {
   virtual void anchor(void) = 0;
 };
 
-class VTable : VTableParent {
+// clang and gcc, but not msvc need to have a visibility attribute on the class
+// in order to export the vtable.
+
+class PUBLIC_ABI VTable : VTableParent {
   PUBLIC_ABI void anchor(void);
 };
 
