@@ -46,7 +46,7 @@ jobs:
           
       - name: Run tests
         run: |
-          cmake -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS=${{ matrix.defines }}
+          cmake -G Ninja -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DCMAKE_CXX_FLAGS="${{ matrix.defines }} -Werror"
           ninja
 
   compiler-tests-windows:
