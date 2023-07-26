@@ -40,7 +40,7 @@ public:
 // clang and gcc, but not msvc need to have a visibility attribute on the class
 // in order to export the vtable.
 
-class VTable : VTableParent {
+class PUBLIC_ABI VTable : VTableParent {
 public:
   PUBLIC_ABI void anchor(void);
 };
