@@ -33,13 +33,15 @@ class PUBLIC_ABI alignas(8) AlignAs { };
 //namespace PUBLIC_ABI attribute_before { }
 
 class VTableParent {
+public:
   virtual void anchor(void) = 0;
 };
 
 // clang and gcc, but not msvc need to have a visibility attribute on the class
 // in order to export the vtable.
 
-class PUBLIC_ABI VTable : VTableParent {
+class VTable : VTableParent {
+public:
   PUBLIC_ABI void anchor(void);
 };
 
