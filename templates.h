@@ -3,13 +3,19 @@
 // msvc requies friend function declarations to have attributes if the regular
 // declaration also does.
 //
-// gcc only accepts c++11 style attributes after void, clang/msvc accept
+// gcc only accepts c++11 style attributes after void for friend attributes, clang/msvc accept
 // it before and after.
 class A {
   friend void PUBLIC_ABI friendFunc(void);
 };
 
 PUBLIC_ABI void friendFunc(void);
+
+// msvc doesn't support the visibility attributes after the return type when the return
+// type is a pointer.
+class B {
+  friend B* PUBLIC_ABI friendFunc(void);
+};
 
 template <typename T> class PUBLIC_ABI TemplateClass {
 public:
