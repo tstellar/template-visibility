@@ -45,10 +45,11 @@ public:
 
 // clang and gcc, but not msvc need to have a visibility attribute on the class
 // in order to export the vtable.
-
+// msvc does not support attributes on the class and a member function:
+// https://learn.microsoft.com/en-us/cpp/error-messages/compiler-errors-1/compiler-error-c2487?view=msvc-170
 class PUBLIC_ABI VTable : VTableParent {
 public:
-  PUBLIC_ABI void anchor(void);
+  void anchor(void);
 };
 
 // msvc unique_ptr issue
