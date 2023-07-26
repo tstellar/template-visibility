@@ -3,7 +3,7 @@
 // msvc requies friend function declarations to have attributes if the regular
 // declaration also does.
 class A {
-  friend PUBLIC_ABI void friendFunc(void);
+  friend void PUBLIC_ABI friendFunc(void);
 };
 
 PUBLIC_ABI void friendFunc(void);
