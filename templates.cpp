@@ -17,3 +17,5 @@ template <typename T> void TemplateClass<T>::get() { }
 // See https://cplusplus.github.io/CWG/issues/470.html
 // See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=22263
 template class TemplateClass<A>;
+
+void VTable::anchor(void){ }

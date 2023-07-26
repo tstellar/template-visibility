@@ -29,6 +29,13 @@ class PUBLIC_ABI alignas(8) AlignAs { };
 // msvc does not support this.
 //namespace PUBLIC_ABI attribute_before { }
 
+class VTableParent {
+  virtual void anchor(void) = 0;
+};
+
+class VTable : VTableParent {
+  PUBLIC_ABI void anchor(void);
+};
 
 // msvc unique_ptr issue
 #include <memory>
