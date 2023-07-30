@@ -68,6 +68,7 @@ private:
 };
 
 class PUBLIC_ABI DefInHeader {
+public:
   void foo(void);
 };
 
