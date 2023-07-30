@@ -67,3 +67,8 @@ private:
     std::vector<std::unique_ptr<UniquePtrTest>> x;
 };
 
+class PUBLIC_ABI DefInHeader {
+  void foo(void);
+};
+
+void DefInHeader::foo(void) { }
