@@ -67,9 +67,16 @@ private:
     std::vector<std::unique_ptr<UniquePtrTest>> x;
 };
 
-class PUBLIC_ABI DefInHeader {
+
+template <typename T>
+class PUBLIC_ABI DefInHeaderParent {
+};
+
+template <typename T>
+class PUBLIC_ABI DefInHeader : DefInHeaderParent<T> {
 public:
   void foo(void);
 };
 
-void DefInHeader::foo(void) { }
+template <typename T>
+void DefInHeader<T>::foo(void) { }
